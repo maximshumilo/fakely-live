@@ -1,0 +1,66 @@
+services:
+
+  ui:
+    image: fakely-live/ui:1.0.8
+    build:
+      context: ui
+      dockerfile: ui/Dockerfile
+    ports:
+      - "443:443"
+      - "80:80"
+    container_name: deepfake_live_ui
+    restart: unless-stopped
+    depends_on:
+      - api
+
+  api:
+    restart: always
+    image: fakely-live/api:1.0.0
+    env_file: .env
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  worker:
+    image: fakely-live/worker:1.0.0
+    build:
+      context: .
+    volumes:
+      - ./models/:/usr/src/app/models/
+    env_file: .env
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu ]
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  rabbitmq:
+    restart: always
+    image: rabbitmq:3.12-management
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    healthcheck:
+      test: [ "CMD-SHELL", "rabbitmq-diagnostics check_running || exit 1" ]
+      interval: 15s
+      timeout: 10s
+      retries: 3
+
+
+  redis:
+    image: redis:7.0-alpine
+    restart: always
+    healthcheck:
+      test: [ "CMD-SHELL", "redis-cli ping" ]
+      interval: 15s
+      timeout: 10s
+      retries: 3
