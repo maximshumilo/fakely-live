@@ -1,0 +1,88 @@
+[build-system]
+requires = ["poetry-core>=2.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+package-mode = false
+
+[project]
+name = "deepfake-live-web-rtc"
+version = "1.0.0"
+description = "Description"
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+dependencies = [
+    "fastapi (>=0.115.12,<0.116.0)",
+    "uvicorn (>=0.34.2,<0.35.0)",
+    "aiortc (==1.11.0)",
+    "av (>=14.3.0,<15.0.0)",
+    "numpy (>=2.2.5,<3.0.0)",
+    "opencv-python (>=4.11.0.86,<5.0.0.0)",
+    "aio-pika (>=9.5.5,<10.0.0)",
+    "pydantic-settings (>=2.9.1,<3.0.0)",
+    "aioredis (==1.3.1)",
+    "python-multipart (>=0.0.20,<0.0.21)",
+]
+
+[tool.poetry.group.dev.dependencies]
+poetry-core = ">=2.0.0"
+faker = ">=37.1.0"
+isort = ">=6.0.1"
+pre-commit = ">=4.2.0"
+pytest = ">=8.3.5"
+pytest-cov = ">=6.1.1"
+ruff = ">=0.11.4"
+
+[tool.isort]
+line_length = 120
+multi_line_output = 3 # Use parentheses for group
+include_trailing_comma = true  # Incldue coma in the end of the line
+use_parentheses = true  # Use parentheses for multiline imports
+combine_as_imports = true  # Allow group imports with aliases
+lines_after_imports = 2
+force_grid_wrap = 2
+
+[tool.ruff]
+include = ["src/**/*.py"]
+fix = true
+
+[tool.ruff.lint]
+extend-select = [
+    "E", # pycodestyle
+    "F", # Pyflakes
+    "UP", # pyupgrade
+    "B", # flake8-bugbear
+    "SIM", # flake8-simplify
+    "Q",
+    "D", # Enable check docstrings
+]
+
+extend-ignore = [
+    'D100', # Docs in a public module
+    'D101', # Docs in public class
+    'D104', # Docs in a public package - __init__.py
+    'D105', # Docs in magic methods
+    'D106', # Docs in public nested class
+]
+
+[tool.ruff.lint.pycodestyle]
+max-line-length = 120
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = "ignore::DeprecationWarning"
+pythonpath = [
+    "./src"
+]
+addopts = """\
+  --strict-markers \
+  --show-capture=no  \
+  --cov-fail-under=90 \
+"""
+
+[tool.coverage.report]
+precision = 2
+exclude_lines = ["pragma: no cover"]
