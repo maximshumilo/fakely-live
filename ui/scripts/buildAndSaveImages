@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-docker-compose build ui
-docker save fakely-live/ui:1.0.8 | gzip -9 > image-fakely-ui.tar.gz
