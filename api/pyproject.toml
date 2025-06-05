@@ -6,7 +6,7 @@ build-backend = "poetry.core.masonry.api"
 package-mode = false
 
 [project]
-name = "deepfake-live-web-rtc"
+name = "fakely-live-api"
 version = "1.0.0"
 description = "Description"
 readme = "README.md"

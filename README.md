@@ -1,10 +1,10 @@
-# Deep Fake Live
+# Fakely Live
 
 A real-time face swapping application that allows users to replace faces in video streams with selected face masks using deep learning technology.
 
 ## Project Overview
 
-Deep Fake Live is a web-based application that enables real-time face swapping in video streams. The system uses deep learning models to detect faces in video frames and replace them with selected face masks. The application provides a user-friendly interface for selecting face masks and recording videos with the face swapping effect applied.
+Fakely Live is a web-based application that enables real-time face swapping in video streams. The system uses deep learning models to detect faces in video frames and replace them with selected face masks. The application provides a user-friendly interface for selecting face masks and recording videos with the face swapping effect applied.
 
 ### Key Features
 
@@ -34,8 +34,8 @@ The project consists of several components:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/deep-fake-live.git
-   cd deep-fake-live
+   git clone https://github.com/yourusername/fakely-live.git
+   cd fakely-live
    ```
 
 2. Create an `.env` file with the required environment variables:

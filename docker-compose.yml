@@ -5,13 +5,14 @@ services:
     ports:
       - "443:443"
       - "80:80"
-    container_name: deepfake_live_ui
+    container_name: fakely_live_ui
     restart: unless-stopped
     depends_on:
       - api
 
   api:
     restart: always
+    container_name: fakely_live_api
     image: fakely-live/api:1.0.0
     env_file: .env
     depends_on:
@@ -21,6 +22,7 @@ services:
         condition: service_healthy
 
   frames-handler:
+    container_name: fakely_live_frames_handler
     image: fakely-live/frames-handler:1.0.0
     volumes:
       - ./models/:/usr/src/app/models/

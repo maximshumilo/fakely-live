@@ -40,7 +40,7 @@ export const takeScreenshot = (remoteVideoRef: RefObject<HTMLVideoElement | null
     ctx?.drawImage(video, 0, 0, canvas.width, canvas.height);
 
     const link = document.createElement('a');
-    link.download = `deepfake-${new Date().toISOString()}.png`;
+    link.download = `fakely-${new Date().toISOString()}.png`;
     link.href = canvas.toDataURL('image/png');
     link.click();
 };
