@@ -1,0 +1,23 @@
+services:
+  ui:
+    build:
+      context: ui
+
+  api:
+    build:
+      context: ./api
+    ports:
+      - "9696:9696"
+
+  frames-handler:
+    build:
+      context: ./frames-handler
+
+  rabbitmq:
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+
+  redis:
+    ports:
+      - '6379:6379'
