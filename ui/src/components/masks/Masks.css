@@ -1,0 +1,36 @@
+.items {
+    overflow: hidden;
+    height: 100%;
+    padding: 25px;
+    background: var(--bg-div-default);
+    flex-direction: row;
+    display: flex;
+    grid-gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    border-radius: 12px;
+}
+
+.face-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 95px;
+    height: 150px;
+}
+
+.face-option img.face-thumb {
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+.face-option.selected img.face-thumb {
+    outline: 10px solid #bb86fc;
+}

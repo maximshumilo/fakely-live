@@ -1,0 +1,69 @@
+@font-face {
+  font-family: 'ALS_Sector';
+  src: url('src/fonts/ALS_Sector_Regular_3.0.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ALS_Sector';
+  src: url('src/fonts/ALS_Sector_Bold_3.0.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  color: #213547;
+  --bs-bg-opacity: 1;
+  --bs-primary-rgb: 13, 110, 253;
+  --bg-div-default: rgb(255, 255, 255, 0.30);
+  --bg-gradiend-default: linear-gradient(160deg, #00c6ff, #0072ff, #5f2c82, #ff0084);
+  --rec-color: rgb(211, 211, 211);
+  --rec-color-dot: rgb(255, 0, 0);
+  font-family: 'ALS_Sector', sans-serif;
+}
+
+div {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+body, html, #root {
+  font-family: Arial, sans-serif;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  background: var(--bg-gradiend-default);
+}
+
+.main-content, .body {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+.main-content {
+  padding: 50px;
+  grid-gap: 50px;
+}
+
+.background-blur {
+  filter: blur(50px);
+}
+
+.mask-items {
+  height: 100%;
+}

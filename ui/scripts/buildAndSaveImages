@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+docker-compose build ui
+docker save deepfake-live/ui:1.0.8 | gzip -9 > image-deepfake-ui.tar.gz

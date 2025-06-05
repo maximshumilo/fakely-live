@@ -1,0 +1,131 @@
+.fake-stream-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.fake-stream {
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+video.stream.fake {
+    position: relative;
+    object-fit: cover;
+    border-radius: 8px;
+    max-width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    width: 100%;
+}
+
+.before-rec-counter {
+    position: absolute;
+    font-size: 350px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+}
+
+.fps-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 25px;
+    color: #ffffff;
+    opacity: 0.7;
+    font-size: 20pt;
+}
+
+.record-wrapper-frame, .record-wrapper-frame-2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.record-wrapper-frame::before,
+.record-wrapper-frame::after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 10px solid var(--rec-color);
+    border-radius: 8px 0 8px 0;
+}
+
+.record-wrapper-frame::before {
+    top: 10px;
+    left: 10px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.record-wrapper-frame::after {
+    bottom: 10px;
+    right: 10px;
+    border-left: none;
+    border-top: none;
+}
+
+.record-wrapper-frame-2::before,
+.record-wrapper-frame-2::after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 10px solid var(--rec-color);
+    border-radius: 0 8px 0 8px;
+}
+
+.record-wrapper-frame-2::before {
+    top: 10px;
+    right: 10px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.record-wrapper-frame-2::after {
+    bottom: 10px;
+    left: 10px;
+    border-right: none;
+    border-top: none;
+}
+
+
+.record-wrapper-frame .rec-indicator {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 20pt;
+    color: var(--rec-color-dot);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.rec-indicator .dot {
+    width: 25px;
+    height: 25px;
+    background-color: var(--rec-color-dot);
+    border-radius: 50%;
+    animation: blink 1s infinite;
+}
+
+.countdown {
+    position: absolute;
+    top: 70px;
+    right: 30px;
+    font-size: 16pt;
+    color: #ffffff;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}

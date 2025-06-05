@@ -1,0 +1,32 @@
+.panel {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 50px;
+
+    position: absolute;
+    z-index: 100;
+    border: 1px solid #878787;
+    border-radius: 8px;
+    background: var(--bg-gradiend-default);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    padding: 75px;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 50px;
+    right: 50px;
+    margin-inline: auto;
+    width: auto;
+
+}
+
+.panel .control {
+    display: flex;
+    justify-content: center;
+}
+
+.control button {
+    width: 400px;
+    color: white;
+    background-color: #646cff;
+    font-size: 22pt;
+}
