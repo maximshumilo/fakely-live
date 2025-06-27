@@ -18,7 +18,7 @@ Fakely Live is a web-based application that enables real-time face swapping in v
 
 The project consists of several components:
 
-- **UI**: React-based web interface for user interaction
+- **UI**: React-based web interface for user interaction (vertical layout 1080x1850)
 - **API**: FastAPI backend that handles WebRTC connections and mask selection
 - **Frames Handler**: Processes video frames and applies face swapping
 - **RabbitMQ**: Message broker for frame data exchange between components
@@ -30,29 +30,35 @@ The project consists of several components:
 - NVIDIA GPU with CUDA support
 - Modern web browser with WebRTC support
 
-## Installation
+## Quick start
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/fakely-live.git
-   cd fakely-live
+1. Create an `.env` file with the required environment variables:
    ```
-
-2. Create an `.env` file with the required environment variables:
-   ```
+   # Common
+   REDIS_HOST=redis
    RABBITMQ_HOST=rabbitmq
    RABBITMQ_USER=guest
-   RABBITMQ_PASSWORD=guest
+   RABBITMQ_PASS=guest
+
+   # Handler
+   WORKER_COUNT=5
+   DET_SIZE_W=640
+   DET_SIZE_H=640
+   DET_THRESH=0.5
+
+   # Api
+   ENABLE_HANDLE_STREAM=1
    ```
 
-3. Build and start the containers:
+2. Create a `models/` directory at the root of the project and download the face swapping model:
    ```bash
-   docker-compose up -d
+   mkdir -p models
+   wget -O models/inswapper_128.onnx https://huggingface.co/deepinsight/inswapper/resolve/main/inswapper_128.onnx
    ```
 
-   For development:
+3. Start the containers using Docker Hub images:
    ```bash
-   docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+   docker compose up -d
    ```
 
 ## Usage
@@ -73,6 +79,33 @@ The project consists of several components:
    - Recording will automatically stop after the configured time limit
    - The recorded video can be downloaded to your device
 
+## Face Masks
+
+The application uses face mask images to replace faces in the video stream. You can add your own face masks to the system:
+
+1. Create a `faces/` directory at the root of the project if it doesn't exist:
+   ```bash
+   mkdir -p faces
+   ```
+
+2. Place your face mask images in the `faces/` directory.
+3. Supported image formats include JPG, JPEG, PNG, and JFIF.
+4. For best results, use high-quality frontal face images with good lighting and clear facial features.
+5. The face mask images are automatically mounted to the container via a volume, so any changes to the `faces/` directory on your host machine will be immediately available in the application without needing to restart the container.
+6. The new face masks will appear in the selection panel in the UI after refreshing the page.
+
+## Face Swap Model
+
+The application requires a face swapping model to perform the face replacement:
+
+1. Create a `models/` directory at the root of the project if it doesn't exist:
+   ```bash
+   mkdir -p models
+   ```
+
+2. Place your face swapping model in the `models/` directory next to the docker-compose.yml file.
+3. The model is automatically mounted to the container via a volume, so any changes to the `models/` directory on your host machine will be immediately available in the application.
+
 ## Development
 
 ### Project Structure
@@ -86,7 +119,7 @@ The project consists of several components:
 ### Running in Development Mode
 
 ```bash
-docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 ```
 
 This will:

@@ -1,7 +1,7 @@
 services:
 
   ui:
-    image: fakely-live/ui:1.0.8
+    image: shumilomaks/fakely-live-ui:1.0.0
     ports:
       - "443:443"
       - "80:80"
@@ -13,7 +13,9 @@ services:
   api:
     restart: always
     container_name: fakely_live_api
-    image: fakely-live/api:1.0.0
+    image: shumilomaks/fakely-live-api:1.0.0
+    volumes:
+      - ./faces/:/usr/src/app/src/faces/
     env_file: .env
     depends_on:
       rabbitmq:
@@ -23,7 +25,7 @@ services:
 
   frames-handler:
     container_name: fakely_live_frames_handler
-    image: fakely-live/frames-handler:1.0.0
+    image: shumilomaks/fakely-live-frames-handler:1.0.0
     volumes:
       - ./models/:/usr/src/app/models/
     env_file: .env
