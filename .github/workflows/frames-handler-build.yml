@@ -2,7 +2,7 @@ name: Build and Publish Frames Handler Image
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
     paths:
       - 'frames-handler/**'
       - '.github/workflows/frames-handler-build.yml'
