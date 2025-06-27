@@ -115,6 +115,7 @@ The application requires a face swapping model to perform the face replacement:
 - `ui/`: React frontend for user interaction
 - `models/`: Directory for storing face swapping models
 - `scripts/`: Utility scripts for development and deployment
+- `.github/`: GitHub Actions workflows for CI/CD
 
 ### Running in Development Mode
 
@@ -132,6 +133,16 @@ This will:
 - `POST /api/offer`: Establish a WebRTC connection
 - `GET /api/masks`: Get a list of available face masks
 - `POST /api/masks`: Set the active face mask
+
+### CI/CD
+
+The project uses GitHub Actions for continuous integration and continuous deployment:
+
+- When changes are pushed to the `api/` directory, a workflow automatically builds and publishes the API Docker image
+- When changes are pushed to the `ui/` directory, a workflow automatically builds and publishes the UI Docker image
+- When changes are pushed to the `frames-handler/` directory, a workflow automatically builds and publishes the Frames Handler Docker image
+
+For more details, see the [GitHub Actions workflows documentation](.github/README.md).
 
 ## Troubleshooting
 
