@@ -7,6 +7,7 @@ from aiortc import (
 from aiortc.contrib.media import MediaRelay
 
 from config import CONFIG
+from ._host_replace import rewrite_sdp_candidates_for_vpn
 
 from .stream import (
     FaceSwapStream,
@@ -43,10 +44,15 @@ class WebRtc:
         self.connections.add(pc)
 
         await self._setup_peer_connection(pc=pc, session=session)
+        sdp = pc.localDescription.sdp
+        pc_type = pc.localDescription.type
+
+        if CONFIG.ICE_CANDIDATE_HOST:
+            sdp = rewrite_sdp_candidates_for_vpn(sdp=sdp, new_ip=CONFIG.ICE_CANDIDATE_HOST)
 
         return {
-            "sdp": pc.localDescription.sdp,
-            "type": pc.localDescription.type
+            "sdp": sdp,
+            "type": pc_type
         }
 
     async def _setup_peer_connection(self, pc: RTCPeerConnection, session: RTCSessionDescription):

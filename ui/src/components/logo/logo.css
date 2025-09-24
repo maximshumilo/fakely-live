@@ -6,19 +6,6 @@
 }
 
 .logo svg {
-  width: 100%;
-  height: auto;
-}
-
-.logo .partners {
-  width: 100%;
-  height: 130px;
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-  grid-gap: 50px;
-}
-
-.logo .partners svg {
   width: auto;
+  height: 200px;
 }

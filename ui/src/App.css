@@ -19,7 +19,7 @@
   --bs-bg-opacity: 1;
   --bs-primary-rgb: 13, 110, 253;
   --bg-div-default: rgb(255, 255, 255, 0.30);
-  --bg-gradiend-default: linear-gradient(160deg, #00c6ff, #0072ff, #5f2c82, #ff0084);
+  --bg-gradiend-default: white;
   --rec-color: rgb(211, 211, 211);
   --rec-color-dot: rgb(255, 0, 0);
   font-family: 'ALS_Sector', sans-serif;

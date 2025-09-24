@@ -7,7 +7,7 @@
     display: flex;
     grid-gap: 20px;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: start;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     border-radius: 12px;
 }

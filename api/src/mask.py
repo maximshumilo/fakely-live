@@ -26,7 +26,7 @@ class FaceMask:
 
         This method must be called before using any other methods of this class.
         """
-        self.client = await create_redis(f"redis://{CONFIG.REDIS_HOST}")
+        self.client = await create_redis(f"redis://{CONFIG.REDIS_HOST}:{CONFIG.REDIS_PORT}")
 
     async def update(self, image_path: Path | None) -> None:
         """Update the face mask image in Redis.

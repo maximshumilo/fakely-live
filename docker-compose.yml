@@ -1,7 +1,7 @@
 services:
 
   ui:
-    image: shumilomaks/fakely-live-ui:1.0.0
+    image: shumilomaks/fakely-live-ui:1.1.1
     ports:
       - "443:443"
       - "80:80"
@@ -11,9 +11,10 @@ services:
       - api
 
   api:
+    network_mode: host
     restart: always
     container_name: fakely_live_api
-    image: shumilomaks/fakely-live-api:1.0.0
+    image: shumilomaks/fakely-live-api:1.0.3
     volumes:
       - ./faces/:/usr/src/app/src/faces/
     env_file: .env
@@ -25,7 +26,7 @@ services:
 
   frames-handler:
     container_name: fakely_live_frames_handler
-    image: shumilomaks/fakely-live-frames-handler:1.0.0
+    image: shumilomaks/fakely-live-frames-handler:1.0.1
     volumes:
       - ./models/:/usr/src/app/models/
     env_file: .env

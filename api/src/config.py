@@ -18,11 +18,14 @@ class Config(BaseSettings):
     VIDEOS_PATH: Path = ROOT_PATH / "videos"
 
     RABBITMQ_HOST: str = "rabbitmq"
+    RABBITMQ_PORT: int = 5672
     RABBITMQ_USER: str = "guest"
     RABBITMQ_PASSWORD: str = "guest"
 
     REDIS_HOST: str = "redis"
+    REDIS_PORT: int = 6379
 
+    ICE_CANDIDATE_HOST: str | None = None
     ENABLE_HANDLE_STREAM: bool = True
 
 

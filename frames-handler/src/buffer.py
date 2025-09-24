@@ -25,7 +25,7 @@ class FrameBuffer:
         credentials = pika.PlainCredentials(CONFIG.RABBITMQ_USER, CONFIG.RABBITMQ_PASSWORD)
         parameters = pika.ConnectionParameters(
             host=CONFIG.RABBITMQ_HOST,
-            port=5672,
+            port=CONFIG.RABBITMQ_PORT,
             credentials=credentials,
             heartbeat=0,
             socket_timeout=1,

@@ -48,7 +48,7 @@ class FrameBuffer:
 
         This method must be called before using any other methods of this class.
         """
-        amqp_url = f"amqp://{CONFIG.RABBITMQ_USER}:{CONFIG.RABBITMQ_PASSWORD}@{CONFIG.RABBITMQ_HOST}:5672/"
+        amqp_url = f"amqp://{CONFIG.RABBITMQ_USER}:{CONFIG.RABBITMQ_PASSWORD}@{CONFIG.RABBITMQ_HOST}:{CONFIG.RABBITMQ_PORT}/"
         self._connection = await connect_robust(
             url=amqp_url,
             timeout=300,

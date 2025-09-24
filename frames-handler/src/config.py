@@ -9,10 +9,12 @@ class Config(BaseSettings):
     MODELS_PATH: Path = ROOT_PATH / "models"
 
     RABBITMQ_HOST: str = "rabbitmq"
+    RABBITMQ_PORT: int = 5672
     RABBITMQ_USER: str = "guest"
     RABBITMQ_PASSWORD: str = "guest"
 
     REDIS_HOST: str = "redis"
+    REDIS_PORT: int = 6379
 
     WORKER_COUNT: int = 4
     DET_SIZE_W: int = 640

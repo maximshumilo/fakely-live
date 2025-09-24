@@ -9,7 +9,7 @@ class FaceMask:
     _KEY_MD5: str = 'mask_md5'
 
     def __init__(self):
-        self.client = Redis(host=CONFIG.REDIS_HOST, port=6379, db=0)
+        self.client = Redis(host=CONFIG.REDIS_HOST, port=CONFIG.REDIS_PORT, db=0)
 
     def get_bytes(self) -> bytes:
         return self.client.get(self._KEY_BYTES)
